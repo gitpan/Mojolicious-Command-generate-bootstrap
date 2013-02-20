@@ -1,0 +1,6 @@
+Revision history for Perl extension Mojolicious::Command::generate::bootstrap.
+
+0.01  Tue Feb 19 20:18:30 2013
+	- original version; created by h2xs 1.23 with options
+		-AX --skip-exporter --use-new-tests -n Mojolicious::Command::generate::bootstrap
+
