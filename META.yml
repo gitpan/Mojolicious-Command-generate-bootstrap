@@ -1,5 +1,5 @@
 ---
-abstract: unknown
+abstract: 'Include Twitters Bootstrap'
 author:
   - 'Sven Eppler (cpan@sveneppler.de)'
 build_requires:
@@ -19,4 +19,4 @@ no_index:
     - inc
 requires:
   Mojolicious: 3.11
-version: 0.01
+version: 0.02

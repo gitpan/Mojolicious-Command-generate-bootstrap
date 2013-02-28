@@ -1,5 +1,5 @@
 {
-   "abstract" : "unknown",
+   "abstract" : "Include Twitters Bootstrap",
    "author" : [
       "Sven Eppler (cpan@sveneppler.de)"
    ],
@@ -37,5 +37,5 @@
       }
    },
    "release_status" : "stable",
-   "version" : "0.01"
+   "version" : "0.02"
 }

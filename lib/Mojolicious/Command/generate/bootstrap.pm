@@ -6,12 +6,12 @@ use warnings;
 use Mojo::Base "Mojolicious::Command";
 use Mojo::Util "b64_decode";
 
-our $VERSION = "0.01";
-has "description" => "Download and unpack current Twitter Bootstrap library";
+our $VERSION = "0.02";
+has "description" => "Deploy Twitter Bootstrap library into your Mojolicous-App";
 
 =head1 NAME
 
-Mojolicious::Command::geneerate::bootstrap - Include Twitters Bootstrap
+Mojolicious::Command::generate::bootstrap - Include Twitters Bootstrap
 
 =head1 SYNOPSIS
 
@@ -24,21 +24,24 @@ Will automagically unload following files:
    $APPHOME/public/js/bootstrap.min.js
    $APPHOME/public/img/glyphicons-halflings.png
    $APPHOME/public/img/glyphicons-halflings-white.png
+   $APPHOME/templates/layouts/bootstrap.html.ep
 
-So you only have to include those into your Templates/Layouts.
+So you only have to include those into your Templates/Layouts or use the enhanced default layout "bootstrap.html.ep".
 
 Currently bundled with this Module is Version 2.3.0 of the Twitter Bootstrap Library.
 
 =head1 INSTALL
 
+Just like any other ordinary perl module:
+
    perl Makefile.pl
-	make
-	make test
-	make install
+   make
+   make test
+   make install
 
 =head1 SUPPORT
 
-Report Bugs and Problems to cpan@sveneppler.de	
+Report Bugs and Problems to cpan@sveneppler.de
 
 =head1 LICENSE AND COPYRIGHT
 
@@ -52,7 +55,15 @@ See http://dev.perl.org/licenses/ for more information.
 
 =head1 CHANGES
 
+=over
+
+=item *
+0.02 - 28.02.2013: Included an enhanced default layout, idea by Tetsuya Tatsumi
+
+=item *
 0.01 - 19.02.2013: Initial CPAN Version
+
+=back
 
 =cut
 
@@ -68,8 +79,7 @@ sub run {
 	my $glyph_white = $self->render_data("glyphicons-halflings-white.png");
 	$self->write_rel_file("public/img/glyphicons-halflings-white.png", b64_decode($glyph_white));
 
-
-
+	$self->render_to_rel_file("bootstrap.html.ep", "templates/layouts/bootstrap.html.ep");
 }
 
 
@@ -477,3 +487,17 @@ kJ4f916GBNr8mRr7vIdMsx4ekXNCZPwlEgjTK02it2Dd41NL9o0416Sy96vsuiqDqgIpZ2yQECOO
 MyLEEJJn0YqYUwsZx+MUi46pcXRjeHiDmnxIPpasxvg98BiMOrPFBOcT/c5tymrV5azf/+zVVd/y
 wfN2o3HseY2Pc6nckp5MZ2z+G0M2K1tGzVNXHGeF9pM59ZiDd1YzvDG1QQnrDI9OlN9EvjzN+6vL
 wiQ1Zf8XKHOE+o2hoP9bDhzQAAAAIAjbqGIC+pezh55hRi4VlKhdsUuh7scAAAAASUVORK5CYII=
+
+@@ bootstrap.html.ep
+<!DOCTYPE html>
+<html>
+  <head>
+     <title><%= title %></title>
+     <link rel="stylesheet" href="<%= url_for("/css/bootstrap.min.css") %>" />
+     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+     <script language="javascript" src="<%= url_for("/js/bootstrap.min.js") %>"></script>
+  </head>
+  <body>
+     <%= content %>
+  </body>
+</html>
