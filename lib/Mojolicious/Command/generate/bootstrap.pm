@@ -6,7 +6,7 @@ use warnings;
 use Mojo::Base "Mojolicious::Command";
 use Mojo::Util "b64_decode";
 
-our $VERSION = "0.02";
+our $VERSION = "0.03";
 has "description" => "Deploy Twitter Bootstrap library into your Mojolicous-App";
 
 =head1 NAME
@@ -56,6 +56,9 @@ See http://dev.perl.org/licenses/ for more information.
 =head1 CHANGES
 
 =over
+
+=item *
+0.03 - 01.03.2013: Missing Escapes when generating the bootstrap.html.ep layout file
 
 =item *
 0.02 - 28.02.2013: Included an enhanced default layout, idea by Tetsuya Tatsumi
@@ -492,12 +495,14 @@ wiQ1Zf8XKHOE+o2hoP9bDhzQAAAAIAjbqGIC+pezh55hRi4VlKhdsUuh7scAAAAASUVORK5CYII=
 <!DOCTYPE html>
 <html>
   <head>
-     <title><%= title %></title>
-     <link rel="stylesheet" href="<%= url_for("/css/bootstrap.min.css") %>" />
+     <title><%%= title %></title>
+     <link rel="stylesheet" href="<%%= url_for("/css/bootstrap.min.css") %>" />
      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-     <script language="javascript" src="<%= url_for("/js/bootstrap.min.js") %>"></script>
+     <script language="javascript" src="<%%= url_for("/js/bootstrap.min.js") %>"></script>
   </head>
   <body>
-     <%= content %>
+    <div class="container">
+       <%%= content %>
+    </div>
   </body>
 </html>
