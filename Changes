@@ -1,5 +1,8 @@
 Revision history for Perl extension Mojolicious::Command::generate::bootstrap.
 
+0.03
+	- Fixed Escaping-Bug in "bootstrap.html.ep"
+
 0.02
 	- Added a default-template "bootstrap.html.ep" which includes all CSS and JS Files
      Thanks to Tetsuya Tatsumi

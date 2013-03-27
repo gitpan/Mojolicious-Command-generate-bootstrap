@@ -6,8 +6,9 @@ use warnings;
 use Mojo::Base "Mojolicious::Command";
 use Mojo::Util "b64_decode";
 
-our $VERSION = "0.03";
-has "description" => "Deploy Twitter Bootstrap library into your Mojolicous-App";
+our $VERSION = "0.04";
+has "description" => "Deploy Twitter Bootstrap library into your Mojolicous-App.\n";
+has "usage" => "usage: $0 generate bootstrap\n";
 
 =head1 NAME
 
